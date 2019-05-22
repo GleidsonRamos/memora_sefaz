@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sefaz_exemplo/bloc/BlocLogin.dart';
+import 'package:sefaz_exemplo/components/http_client.dart';
 import 'package:sefaz_exemplo/components/textbox.dart';
+import 'package:sefaz_exemplo/enum/type_request.dart';
+import 'package:sefaz_exemplo/models/model_user.dart';
+import 'package:sefaz_exemplo/pages/home.dart';
+import 'package:sefaz_exemplo/store/url_store.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -11,26 +16,50 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
+  TextEditingController _textUser = new TextEditingController();
+  TextEditingController _textPass = new TextEditingController();
+
   @override
   void initState() {
     super.initState();
   }
 
-  signIn(String User, String Senha) {
 
-
-
-
-    /*
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => Home())
-    );
-    */
+  onSucessLogin(var response){
+    //Fazer alguma coisa aqui, como passar para proxima tela
   }
 
-  TextEditingController _textUser = new TextEditingController();
-  TextEditingController _textPass = new TextEditingController();
+  onFailLogin(var response){
+    //Fazer alguma coisa aqui, como mostrar uma mensagem de erro
+  }
 
+  signIn() {
+    print('onpressed disparado');
+    String User = _textUser.text;
+    String Pass = _textPass.text;
+
+    ModelUser modelUser = new ModelUser(user: User, pass: Pass);
+    //TODO: O codigo comentado abaixo é o uso do http_client para quando estiver implementado a conexao com o servidor. Veja mais na classe components/http_client.dart
+    /*
+    final String url = UrlStore.getUrlLogin();
+
+    MyHttpClient httpClient = new MyHttpClient(
+      url: url,
+      type: TypeRequest.POST,
+      body: modelUser.toJson(),
+      onSucess: onSucessLogin,
+      onFail: onSucessLogin
+    );
+
+    httpClient.executar();
+
+    */
+
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => HomePage())
+    );
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        onPressed: signIn(blocLogin.getDisplayUser, blocLogin.getDisplayPass),
+                        onPressed: ()=> signIn(),
                         padding: EdgeInsets.all(12),
                         child: Text(
                           'Entrar',

@@ -9,16 +9,13 @@ enum DialogAction {
 }
 
 class Messages {
-  /// ****************SINGLETON SERVICE***********/
 
+  //Singleton
   Messages._();
-
   static Messages _instance = new Messages._();
 
-  /// Gets the instance of service .
+  //Get
   static Messages get instance => _instance;
-
-  /// ****************END SINGLETON SERVICE***********/
 
 
   Future<Widget> showMensagem(String msg, BuildContext context) {
@@ -27,7 +24,7 @@ class Messages {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return new AlertDialog(
-          title: new Text('Saneago'),
+          title: new Text('Sefaz'),
           content: new SingleChildScrollView(
             child: new ListBody(
               children: <Widget>[
