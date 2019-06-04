@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sefaz_exemplo/bloc/BlocCertidaoNegativa.dart';
 import 'package:sefaz_exemplo/components/drawer/drawer.dart';
+import 'package:sefaz_exemplo/pages/bar_chart.dart';
 import 'package:sefaz_exemplo/pages/certidao_negativa.dart';
 import 'package:sefaz_exemplo/pages/grafico_despesas_com_folha.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -24,8 +25,12 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Theme.of(context).primaryColor,
         ),
         drawer: CustomDrawer(),
-        body: Container(
-          child: GraficoDespesasComFolha(_createSampleData()),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            height: 500,
+            child: GroupedBarTargetLineChart.withSampleData(),
+          ),
         )
         );
   }
@@ -40,7 +45,7 @@ class _HomePageState extends State<HomePage> {
               child: CertidaoPage(),
             )));
   }
-
+/*
   static List<charts.Series<OrdinalSales, String>> _createSampleData() {
 
     final inativos = [
@@ -82,4 +87,5 @@ class _HomePageState extends State<HomePage> {
         ..setAttribute(charts.rendererIdKey, 'ativos'),
     ];
   }
+  */
 }
