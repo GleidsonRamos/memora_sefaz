@@ -22,6 +22,24 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.2"
+  charts_common:
+    dependency: transitive
+    description:
+      path: charts_common
+      ref: HEAD
+      resolved-ref: "837b738a3f1bcc5881636009c3610517ff09450a"
+      url: "https://github.com/GleidsonRamos/charts.git"
+    source: git
+    version: "0.6.0"
+  charts_flutter:
+    dependency: "direct main"
+    description:
+      path: charts_flutter
+      ref: HEAD
+      resolved-ref: "837b738a3f1bcc5881636009c3610517ff09450a"
+      url: "https://github.com/GleidsonRamos/charts.git"
+    source: git
+    version: "0.6.0"
   collection:
     dependency: transitive
     description:
@@ -67,6 +85,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.5.0+9"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.15.8"
+  logging:
+    dependency: transitive
+    description:
+      name: logging
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.11.3+2"
   mask_shifter:
     dependency: "direct main"
     description:
