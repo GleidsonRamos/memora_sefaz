@@ -44,7 +44,7 @@ class MyHttpClient{
       onFail(response);
     } else {
       final responseJson = convert.jsonDecode(response.body);
-      onSucess(responseJson);
+      onSucess(responseJson, response.headers);
     }
   }
 
@@ -54,7 +54,7 @@ class MyHttpClient{
       onFail(response);
     } else {
       final responseJson = convert.jsonDecode(response.body);
-      onSucess(responseJson);
+      onSucess(responseJson, response.headers);
     }
   }
 
