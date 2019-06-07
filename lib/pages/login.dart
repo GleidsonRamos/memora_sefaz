@@ -33,10 +33,10 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
   }
 
-  signIn() {
+  signIn() async {
     print('onpressed disparado');
     String User = _textUser.text;
-    String Pass = criptografia.Encrypt(_textPass.text);
+    String Pass = await criptografia.criptografar(_textPass.text);
 
     SingletonAutenticacao.instance.setPassword(Pass); // Armazenando pass no singleton
 
