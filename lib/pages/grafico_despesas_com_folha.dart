@@ -45,6 +45,9 @@ class GraficoDespesasComFolha extends StatelessWidget {
 
     return new OrdinalComboChart(seriesList,
         animate: animate,
+        primaryMeasureAxis: new NumericAxisSpec(
+            tickProviderSpec:
+            new BasicNumericTickProviderSpec(zeroBound: false,desiredMinTickCount: 4,desiredMaxTickCount: 10)),
         customSeriesRenderers: [
           new LineRendererConfig(
             // ID used to link series to this renderer.

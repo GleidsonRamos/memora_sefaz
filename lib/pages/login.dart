@@ -34,6 +34,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   signIn() async {
+    /*
     print('onpressed disparado');
     String User = _textUser.text;
     String Pass = await criptografia.criptografar(_textPass.text);
@@ -59,6 +60,10 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     httpClient.executar();
+    */
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => HomePage())
+    );
   }
 
   onSucessLoginUsuario(var response, var headers){

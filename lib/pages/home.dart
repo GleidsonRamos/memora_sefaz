@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(8.0),
           child: Container(
             height: 500,
-            child: GroupedBarTargetLineChart.withSampleData(),
+            child: GraficoDespesasComFolha.withSampleData(),
           ),
         )
         );
