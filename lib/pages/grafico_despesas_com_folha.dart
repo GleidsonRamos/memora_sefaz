@@ -38,9 +38,11 @@ class GraficoDespesasComFolha extends StatelessWidget {
     new OrdinalSales('Jun', 144),
   ];
 
+
   @override
   Widget build(BuildContext context) {
 
+    SingletonInativos.instance.zerar();
     SingletonInativos.instance.setTotal(inativos);
 
     return new OrdinalComboChart(seriesList,
@@ -113,6 +115,7 @@ class CustomCircleSymbolRendererInativos extends CircleSymbolRenderer {
 
   @override
   void paint(ChartCanvas canvas, Rectangle<num> bounds, {List<int> dashPattern, Color fillColor, Color strokeColor, double strokeWidthPx}) {
+
     super.paint(canvas, bounds, dashPattern: dashPattern, fillColor: fillColor, strokeColor: strokeColor, strokeWidthPx: strokeWidthPx);
     canvas.drawRect(
         Rectangle(bounds.left - 5, bounds.top - 30, bounds.width + 10, bounds.height + 10),
@@ -121,11 +124,15 @@ class CustomCircleSymbolRendererInativos extends CircleSymbolRenderer {
     var textStyle = style.TextStyle();
     textStyle.color = Color.black;
     textStyle.fontSize = 15;
-    canvas.drawText(
-        TextElement(list[SingletonInativos.instance._iterator].sales.toString(), style: textStyle),
-        (bounds.left).round(),
-        (bounds.top - 28).round()
-    );
+
+
+      canvas.drawText(
+          TextElement(
+              list[SingletonInativos.instance.iterator].sales.toString(),
+              style: textStyle),
+          (bounds.left).round(),
+          (bounds.top - 28).round()
+      );
     SingletonInativos.instance.upIterator();
   }
 }
@@ -136,7 +143,6 @@ class SingletonInativos {
   static SingletonInativos _instance = new SingletonInativos._();
   static SingletonInativos get instance => _instance;
 
-  //Atributos
   int _total = 0;
   int _iterator = 0;
 
@@ -156,6 +162,11 @@ class SingletonInativos {
     else{
       this._iterator = 0;
     }
+  }
+
+  void zerar(){
+    this._total = 0;
+    this._iterator = 0;
   }
 
 }

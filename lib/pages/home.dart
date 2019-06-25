@@ -6,6 +6,7 @@ import 'package:sefaz_exemplo/pages/bar_chart.dart';
 import 'package:sefaz_exemplo/pages/certidao_negativa.dart';
 import 'package:sefaz_exemplo/pages/grafico_despesas_com_folha.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:flutter/scheduler.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -13,9 +14,24 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+
 class _HomePageState extends State<HomePage> {
+
+  @override
+  void initState() {
+    super.initState();
+    if (SchedulerBinding.instance.schedulerPhase == SchedulerPhase.persistentCallbacks) {
+      SchedulerBinding.instance.addPostFrameCallback((_) => zerarSingleton(context));
+    }
+  }
+
+  zerarSingleton(BuildContext context){
+    SingletonInativos.instance.zerar();
+  }
+
   @override
   Widget build(BuildContext context) {
+    SingletonInativos.instance.zerar();
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -29,7 +45,7 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(8.0),
           child: Container(
             height: 500,
-            child: GraficoDespesasComFolha.withSampleData(),
+            child: new GraficoDespesasComFolha.withSampleData(),
           ),
         )
         );
